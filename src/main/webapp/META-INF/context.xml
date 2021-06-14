@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource
+            name="jdbc/MySql"
+            type="javax.sql.DataSource"
+            auth="Container"
+            username="shj"
+            password="tmdgus9435"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://14.45.204.156:3306/term_project?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useSSL=false"
+            maxActive="30" maxIdle="3" maxWait="3000"/>
+</Context>
