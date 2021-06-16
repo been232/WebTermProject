@@ -17,7 +17,9 @@ public class RentalManagementController implements Controller {
             throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
         if(url.equals("/RentalManagement/laon")) {
-            ArrayList<RentalManagement> rental = rentalManagementService.findRentals(1);
+            ArrayList<RentalManagement> rentals = rentalManagementService.findRentals(1);
+            modelAndView.setViewName("main");
+            modelAndView.getModel().put("rentals", rentals);
         }
         return modelAndView;
     }
