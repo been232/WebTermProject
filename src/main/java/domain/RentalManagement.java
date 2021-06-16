@@ -1,18 +1,20 @@
 package domain;
 
+import java.time.LocalDateTime;
+
 public class RentalManagement {
     public int num;
     public int bookNum;
     public String bookId;
     public String userNum;
-    public String date;
-    public String returndate;
+    public LocalDateTime date;
+    public LocalDateTime returndate;
 
     public RentalManagement(){
 
     }
 
-    public RentalManagement(int num, int bookNum, String bookId, String userNum, String date, String returndate) {
+    public RentalManagement(int num, int bookNum, String bookId, String userNum, LocalDateTime date, LocalDateTime returndate) {
         this.num = num;
         this.bookNum = bookNum;
         this.bookId = bookId;
@@ -53,19 +55,19 @@ public class RentalManagement {
         this.userNum = userNum;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public String getReturndate() {
+    public LocalDateTime getReturndate() {
         return returndate;
     }
 
-    public void setReturndate(String returndate) {
+    public void setReturndate(LocalDateTime returndate) {
         this.returndate = returndate;
     }
 

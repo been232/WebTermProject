@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class RentalManagementRepository {
@@ -37,11 +38,12 @@ public class RentalManagementRepository {
         ResultSet rs = null;
         RentalManagement rental = null;
         ArrayList<RentalManagement> rentals = new ArrayList<>();
-        String sql = "SELECT * FROM rentalmanagement WHERE usernum = ?";
+        String sql = "SELECT * FROM rentalmanagement WHERE User_Num = ?";
         try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userNum);
+            rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 int num = rs.getInt("Rental_Num");
@@ -49,10 +51,9 @@ public class RentalManagementRepository {
                 String bookId = rs.getString("Book_Id");
                 String bookName = rs.getString("Book_Name");
                 userNum = rs.getInt("User_Num");
-                String date = rs.getString("Rental_Date");
-                //LocalDateTime date = rs.getTimestamp("Rental_Date").toLocalDateTime();
-                //LocalDateTime returnDate = rs.getTimestamp("Rental_Return").toLocalDateTime();
-                rental = new RentalManagement(num, bookNum, bookId, bookName, "", date);
+                LocalDateTime date = rs.getTimestamp("Rental_Date").toLocalDateTime();
+                LocalDateTime returnDate = rs.getTimestamp("Rental_Return").toLocalDateTime();
+                rental = new RentalManagement(num, bookNum, bookId, bookName, date, returnDate);
                 rentals.add(rental);
             }
         } catch(SQLException se) {
