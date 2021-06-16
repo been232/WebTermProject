@@ -20,6 +20,7 @@ a {
 main {
     flex : 1;
 }
+
 .container {
     display : flex;
     flex-direction : column;
@@ -51,13 +52,32 @@ main {
     .container {
         width : 100%;
     }
+
+    .item {
+        padding : 10px;
+        display : none;
+    }
+    .active + .item {
+        display : block;
+    }
+    .item-heading{
+        text-align : center;
+        font-weight: bold;
+        background-color : #f0f0f0;
+        color : #878787;
+        cursor : pointer;
+        margin-right : 15px;
+        padding : 10px;
+        border-bottom : 1px solid #dbdbdb;
+        font-size : 16px;
+    }
 }
 
-.item {
+.items {
     flex-basis : 25%;
 }
 
-.menu .item a {
+.menu .items a {
     font-size : 16px;
     color : #878787;
     border-bottom : 1px solid #dbdbdb;
