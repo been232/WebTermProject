@@ -15,7 +15,7 @@ a {
 .container {
     display : flex;
     flex-direction : column;
-    width : 1240px;
+    width : 1024px;
     margin : 0 auto;
 }
 
@@ -27,7 +27,7 @@ a {
 }
 
 .header .header_menu a {
-    color : #444;
+    color : #777;
     padding : 8px 0 6px 10px;
     display : inline-block;
 }
