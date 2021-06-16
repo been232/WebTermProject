@@ -33,13 +33,13 @@
                 <h4 class="col_tit">Menu</h4>
                 <div class="menu">
                     <div class="item">
-                        <a href="">메뉴 1</a>
+                        <a href="">전체 책 조회</a>
                     </div>
                     <div class="item">
-                        <a href="">메뉴 2</a>
+                        <a href="">대출 현황 조회</a>
                     </div>
                     <div class="item">
-                        <a href="">메뉴 3</a>
+                        <a href="">반납</a>
                     </div>
                 </div>
             </div>
