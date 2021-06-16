@@ -4,7 +4,7 @@ public class User {
     public int num;
     public String name;
     public String id;
-    public String Passward;
+    public String passward;
 
     public User(){
 
@@ -14,7 +14,7 @@ public class User {
         this.num = num;
         this.name = name;
         this.id = id;
-        Passward = passward;
+        this.passward = passward;
     }
 
     public int getNum() {
@@ -42,11 +42,11 @@ public class User {
     }
 
     public String getPassward() {
-        return Passward;
+        return passward;
     }
 
     public void setPassward(String passward) {
-        Passward = passward;
+        this.passward = passward;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class User {
                 "num=" + num +
                 ", name='" + name + '\'' +
                 ", id='" + id + '\'' +
-                ", Passward='" + Passward + '\'' +
+                ", passward='" + passward + '\'' +
                 '}';
     }
 }
