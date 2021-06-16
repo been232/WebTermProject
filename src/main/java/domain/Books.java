@@ -1,19 +1,25 @@
 package domain;
 
+import jdk.vm.ci.meta.Local;
+
+import java.time.LocalDateTime;
+
 public class Books {
     private int num;
     private String id;
+    private String name;
     private String writer;
     private String publisher;
-    private String registraion;
+    private LocalDateTime registraion;
 
     public Books(){
 
     }
 
-    public Books(int num, String id, String writer, String publisher, String registraion) {
+    public Books(int num, String id, String name, String writer, String publisher, LocalDateTime registraion) {
         this.num = num;
         this.id = id;
+        this.name = name;
         this.writer = writer;
         this.publisher = publisher;
         this.registraion = registraion;
@@ -35,6 +41,14 @@ public class Books {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getWriter() {
         return writer;
     }
@@ -51,11 +65,11 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public String getRegistraion() {
+    public LocalDateTime getRegistraion() {
         return registraion;
     }
 
-    public void setRegistraion(String registraion) {
+    public void setRegistraion(LocalDateTime registraion) {
         this.registraion = registraion;
     }
 
@@ -64,6 +78,7 @@ public class Books {
         return "Books{" +
                 "num=" + num +
                 ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", writer='" + writer + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", registraion='" + registraion + '\'' +
