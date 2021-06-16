@@ -41,14 +41,14 @@
 <div>
     <h3>로그인 페이지(Login - Page) - 세션(Session)</h3>
     <!-- 본문 -->
-    <form action = "/front/Login/login" method = "post">
+    <form action="process.do" method="POST">
         <table id="memberTbl">
             <tr>
                 <td style="width:20%; text-align:center;">
                     아이디(userID)
                 </td>
                 <td style="border-left:1px solid #e2e2e2; text-align:center;">
-                    <input type="text" name="id" style="width:90%">
+                    <input type="text" name="userID" style="width:90%">
                 </td>
             </tr>
             <tr>
@@ -56,11 +56,11 @@
                     비밀번호(password)
                 </td>
                 <td style="border-left:1px solid #e2e2e2; border-top:1px solid #e2e2e2; text-align:center;">
-                    <input type="text" name="pw" style="width:90%">
+                    <input type="text" name="password" style="width:90%">
                 </td>
             </tr>
             <tr>
-                <td style="width:50%; border-top:1px solid #e2e2e2; text-align:center;">
+                <td colspan="2" style="border-top:1px solid #e2e2e2; text-align:center;">
                     <input type="submit" value="로그인(Login)" style="width:90%">
                 </td>
             </tr>
