@@ -1,0 +1,19 @@
+.header {}
+
+.header .header_menu {
+    margin : 0 20px 0 0;
+    text-align : right
+}
+
+.header .header_menu a {
+    color : #777;
+    padding : 8px 0 6px 10px;
+    display : inline-block;
+}
+
+.header .header_tit {
+    font-size : 30px;
+    color : #999;
+    text-align : center;
+    white-space: nowrap;
+}

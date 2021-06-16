@@ -26,7 +26,7 @@ public class FrontController extends HttpServlet {
         String com = uri.substring(conPath.length());
 
         if(com.equals("/")) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/main.jsp");
             dispatcher.forward(request, response);
         }
         else {

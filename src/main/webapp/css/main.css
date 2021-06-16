@@ -11,7 +11,15 @@ ul, li, ol {
 a {
     text-decoration : none;
 }
-
+.wrapper {
+    /*display : flex;*/
+    display : flex;
+    min-height : 100vh;
+    flex-direction : column;
+}
+main {
+    flex : 1;
+}
 .container {
     display : flex;
     flex-direction : column;
@@ -19,29 +27,10 @@ a {
     margin : 0 auto;
 }
 
-.header {}
-
-.header .header_menu {
-    margin : 0 20px 0 0;
-    text-align : right
-}
-
-.header .header_menu a {
-    color : #777;
-    padding : 8px 0 6px 10px;
-    display : inline-block;
-}
-
-.header .header_tit {
-    font-size : 30px;
-    color : #999;
-    text-align : center;
-    white-space: nowrap;
-}
-
 .column {
     padding : 15px;
     border-bottom : 1px solid #dbdbdb;
+
 }
 
 .column .col_tit {
