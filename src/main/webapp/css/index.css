@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+/*html, body {*/
+/*    font-family : Helvetica, Arial, sans-serif;*/
+/*    margin : 0;*/
+/*    background-color : #f0f0f0;*/
+/*}*/
+
+/*ul, li, ol {*/
+/*    list-style : none;*/
+/*}*/
+/*a {*/
+/*    text-decoration : none;*/
+/*}*/
+
+/*.container {*/
+/*    display : flex;*/
+/*    flex-direction : column;*/
+/*}*/
+
+/*.header {}*/
+
+/*.header .header_menu {*/
+/*    text-align : right*/
+/*}*/
+
+/*.header .header_menu a {*/
+/*    color : #fff;*/
+/*    padding : 8px 0 6px 10px;*/
+/*    display : inline-block;*/
+/*}*/
+
+h1{
+    color:red;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 2px;
+    margin-bottom: 10px;
+}
