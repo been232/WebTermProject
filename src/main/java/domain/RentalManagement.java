@@ -3,32 +3,35 @@ package domain;
 import java.time.LocalDateTime;
 
 public class RentalManagement {
-    public int num;
+
+    public int rentalNum;
     public int bookNum;
     public String bookId;
-    public String userNum;
-    public LocalDateTime date;
+    public String bookName;
+    public int userNum;
+    public LocalDateTime rentalDate;
     public LocalDateTime returndate;
 
     public RentalManagement(){
 
     }
 
-    public RentalManagement(int num, int bookNum, String bookId, String userNum, LocalDateTime date, LocalDateTime returndate) {
-        this.num = num;
+    public RentalManagement(int rentalNum, int bookNum, String bookId, String bookName, int userNum, LocalDateTime rentalDate, LocalDateTime returndate) {
+        this.rentalNum = rentalNum;
         this.bookNum = bookNum;
         this.bookId = bookId;
+        this.bookName = bookName;
         this.userNum = userNum;
-        this.date = date;
+        this.rentalDate = rentalDate;
         this.returndate = returndate;
     }
 
-    public int getNum() {
-        return num;
+    public int getRentalNum() {
+        return rentalNum;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setRentalNum(int rentalNum) {
+        this.rentalNum = rentalNum;
     }
 
     public int getBookNum() {
@@ -47,20 +50,28 @@ public class RentalManagement {
         this.bookId = bookId;
     }
 
-    public String getUserNum() {
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public int getUserNum() {
         return userNum;
     }
 
-    public void setUserNum(String userNum) {
+    public void setUserNum(int userNum) {
         this.userNum = userNum;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getRentalDate() {
+        return rentalDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setRentalDate(LocalDateTime rentalDate) {
+        this.rentalDate = rentalDate;
     }
 
     public LocalDateTime getReturndate() {
@@ -71,15 +82,4 @@ public class RentalManagement {
         this.returndate = returndate;
     }
 
-    @Override
-    public String toString() {
-        return "RentalManagement{" +
-                "num=" + num +
-                ", bookNum=" + bookNum +
-                ", bookId='" + bookId + '\'' +
-                ", userNum='" + userNum + '\'' +
-                ", date='" + date + '\'' +
-                ", returndate='" + returndate + '\'' +
-                '}';
-    }
 }

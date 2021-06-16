@@ -18,9 +18,10 @@ public class RentalManagementController implements Controller {
         ModelAndView modelAndView = new ModelAndView();
         if(url.equals("/RentalManagement/laon")) {
             ArrayList<RentalManagement> rentals = rentalManagementService.findRentals(1);
-            modelAndView.setViewName("main");
+            modelAndView.setViewName("RentalManagement/loan");
             modelAndView.getModel().put("rentals", rentals);
         }
+
         return modelAndView;
     }
 }

@@ -13,33 +13,62 @@
     <%@include file ="/css/main.css" %>
 </style>
 <body>
-<div class = "wrapper">
+<div class="wrapper">
     <jsp:include page="./Layout/header.jsp"/>
     <main>
-        <div id="cont_left">
+        <div id="cont_top">
             <div class="container">
                 <div class="column">
                     <h4 class="col_tit">Menu</h4>
                     <div class="menu">
-                        <div class = "items">
-<%--                            <a href = "">전체 책 조회</a>--%>
-                            <a class = "item-heading">전체 책 조회</a>
-                            <div class = "item">
-                                <p>책 1</p>
-                                <p>책 2</p>
-                                <p>책 3</p>
-                                <p>책 4</p>
-                                <p>책 5</p>
+                        <form id="form1" action="" target="iframe1">
+                            <div class="items">
+                                <div class="item-heading">
+                                    <button type="submit" class="button">전체 책 정보 조회</button>
+                                    <div class="item">
+                                        <iframe class = "iframe" name = "iframe1">
+
+                                        </iframe>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="items">
-                            <a class = "item-heading" href="/front/RentalManagement/laon">대출 현황 조회</a>
-                            <div class = "item">
-                                <jsp:include page="./RentalManagement/loan.jsp"/>
+                        </form>
+                        <form id="form2" action="/front/RentalManagement/laon" target="iframe2">
+                            <div class="items">
+                                <div class="item-heading">
+                                    <button type="submit" class="button">대출 현황 조회</button>
+                                    <div class="item">
+                                        <iframe class = "iframe" name="iframe2">
+                                            <jsp:include page="./RentalManagement/loan.jsp"/>
+                                        </iframe>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="items">
-                            <a href="">반납</a>
+                        </form>
+                        <form id="form3" action="" target="iframe3">
+                            <div class="items">
+                                <div class="item-heading">
+                                    <button type="submit" class="button">반납</button>
+                                    <div class="item">
+                                        <iframe class = "iframe" name = "iframe3">
+
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cont_bottom">
+            <div class="container">
+                <div class="column">
+                    <div id = "hidden-frame">
+                        <div class = "item">
+                            <iframe class = "iframe" name = "iframe4">
+                                <jsp:include page = "./RentalManagement/loan.jsp"/>
+                            </iframe>
                         </div>
                     </div>
                 </div>

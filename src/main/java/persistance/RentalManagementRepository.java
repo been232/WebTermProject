@@ -53,7 +53,7 @@ public class RentalManagementRepository {
                 userNum = rs.getInt("User_Num");
                 LocalDateTime date = rs.getTimestamp("Rental_Date").toLocalDateTime();
                 LocalDateTime returnDate = rs.getTimestamp("Rental_Return").toLocalDateTime();
-                rental = new RentalManagement(num, bookNum, bookId, bookName, date, returnDate);
+                rental = new RentalManagement(num, bookNum, bookId, bookName, userNum, date, returnDate);
                 rentals.add(rental);
             }
         } catch(SQLException se) {
