@@ -35,7 +35,7 @@
                         <div class="items">
                             <a class = "item-heading" href="/front/RentalManagement/laon">대출 현황 조회</a>
                             <div class = "item">
-                                <jsp:include page ="./RentalManagement/loan.jsp"/>
+                                <jsp:include page="./RentalManagement/loan.jsp"/>
                             </div>
                         </div>
                         <div class="items">
