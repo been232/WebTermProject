@@ -1,4 +1,4 @@
-const x = window.matchMedia("screen and (min-width: 1025px)");
+﻿const x = window.matchMedia("screen and (min-width: 1025px)");
 let form = document.getElementById("form2");
 window.onload = function () {
     if(x.matches) {
@@ -41,5 +41,8 @@ for (var i = 0; i < items.length; i++) {
 }
 
 function isLogin(userID) {
-    return userID != null;
+    if(userID != null) return true;
+    else {
+        alert("로그인이 필요합니다.");
+    }
 }
