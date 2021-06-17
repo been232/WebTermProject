@@ -51,7 +51,8 @@ for (var i = 0; i < items.length; i++) {
 function isLogin(userID) {
     if(userID != null) return true;
     else {
-        alert("로그인이 필요합니다.");
+        alert("로그인이 필요합니다.")
+        return false;
     }
 }
 

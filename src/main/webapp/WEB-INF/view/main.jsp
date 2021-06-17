@@ -21,7 +21,7 @@
                 <div class="column">
                     <h4 class="col_tit">Menu</h4>
                     <div class="menu">
-                        <form class = "form" action="" target="iframe1">
+                        <form class = "form" action="/front/Books/show" target="iframe1">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">전체 책 정보 조회</button>
@@ -32,14 +32,13 @@
                                 </div>
                             </div>
                         </form>
-                        <form class = "form" action="/front/RentalManagement/loan" target="iframe2" onsubmit="isLogin(${userNum});return false">
+                        <form class = "form" action="/front/RentalManagement/loan" target="iframe2" onsubmit="return isLogin(${userID})">
                             <div class="items">
                                 <div class="item-heading">
                                     <button name="id" type="submit" class="button" value="${userNum}">대출 현황 조회
                                     </button>
                                     <div class="item">
                                         <iframe class="iframe" name="iframe2">
-                                            <jsp:include page="./RentalManagement/loan.jsp"/>
                                         </iframe>
                                     </div>
                                 </div>
@@ -67,7 +66,6 @@
                     <div id="hidden-frame">
                         <div class="item">
                             <iframe class="iframe" name="iframe4">
-                                <jsp:include page="./RentalManagement/loan.jsp"/>
                             </iframe>
                         </div>
                     </div>
@@ -85,13 +83,12 @@
                 <div class = "column man2">
                     <h4 class = "col_man">Manager Menu</h4>
                     <div class = "menu">
-                        <form class = "form" action="/front/BooksManagement/create" target="iframe5">
+                        <form class = "form1" action="/front/BooksManagement/create" target="iframe5">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">책 추가</button>
                                     <div class="item">
                                         <iframe class="iframe" name="iframe5">
-                                            <jsp:include page="./BooksManagement/create.jsp"/>
                                         </iframe>
                                     </div>
                                 </div>
