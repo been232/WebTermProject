@@ -1,5 +1,6 @@
 package controller;
 
+import domain.User;
 import service.LoginService;
 
 import javax.servlet.RequestDispatcher;
@@ -27,17 +28,18 @@ public class LoginController implements Controller {
             HttpSession session = request.getSession();
             String id = "";
             String pw = "";
-            int loginResult;
+    //        int loginResult;
+            User loginResult;
             modelAndView.setViewName("Login/login");
             if(request.getMethod().equals("POST"))
             {
                 id = request.getParameter("id");
                 pw = request.getParameter("pw");
                 loginResult = this.loginService.Login(id, pw);
-                if(loginResult == 1)
+                if(loginResult != null)
                 {
                     session.setAttribute("userID", id);
-                    session.setAttribute("userName", "회원");
+                    session.setAttribute("userName", loginResult.getName());
                     System.out.println("로그인 성공");
                     modelAndView.setViewName("main");
                 }

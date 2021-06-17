@@ -36,7 +36,7 @@
                         <form id="form2" action="/front/RentalManagement/laon" target="iframe2">
                             <div class="items">
                                 <div class="item-heading">
-                                    <button type="submit" class="button">대출 현황 조회</button>
+                                    <button type="submit" class="button" value = "${userID}">대출 현황 조회</button>
                                     <div class="item">
                                         <iframe class = "iframe" name="iframe2">
                                             <jsp:include page="./RentalManagement/loan.jsp"/>

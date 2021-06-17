@@ -35,13 +35,14 @@ public class LoginRepository {
         return instance;
     }
 
-    public int certificationLogin(String id, String pw) {
+    public User certificationLogin(String id, String pw) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String dbPassword = "";
-        String sql = "SELECT PASSWORD FROM USER WHERE ID = ?";
-        int result = 0;
+        String sql = "SELECT * FROM USER WHERE User_Id = ?";
+     //   int result = 0;
+        User result = null;
         try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
@@ -49,21 +50,26 @@ public class LoginRepository {
             rs = pstmt.executeQuery();
             if(rs.next()) // 입력된 아이디에 해당된 비번이 있을 경우
             {
-                dbPassword = rs.getString("password");
-
+                dbPassword = rs.getString("User_Passward");
+                String userName = rs.getString("User_Name");
+                int userNum = rs.getInt("User_Num");
                 if(dbPassword.equals(pw))
                 {
-                    result = 1; // DB의 비번과 입력된 비번이 같으면 인증 성공
+                    result = new User();
+                    result.setPassward(dbPassword);
+                    result.setName(userName);
+                    result.setNum(userNum);
+                    //result = 1; // DB의 비번과 입력된 비번이 같으면 인증 성공
                 }
-                else
-                {
-                    result = 0; // DB의 비번과 입력된 비번이 다르면 인증 실패
-                }
+//                else
+//                {
+//                    //result = 0; // DB의 비번과 입력된 비번이 다르면 인증 실패
+//                }
             }
-            else
-            {
-                result = -1; // 해당 아이디가 없을 경우
-            }
+//            else
+//            {
+//                result = -1; // 해당 아이디가 없을 경우
+//            }
         } catch (SQLException var20) {
             var20.printStackTrace();
         } finally {
