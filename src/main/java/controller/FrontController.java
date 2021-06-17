@@ -17,6 +17,7 @@ public class FrontController extends HttpServlet {
     public FrontController() {
         //controllerMap.put("domain 이름", new 도메인 컨트롤러);             // domain이름에 "member", 컨트롤러는 생성자 작성하면됨
         controllerMap.put("Login", new LoginController());
+        controllerMap.put("Logout", new LogoutController());
         controllerMap.put("RentalManagement", new RentalManagementController());
         controllerMap.put("BooksManagement",new BooksManagementController());
         controllerMap.put("Books", new BooksController());
@@ -42,9 +43,11 @@ public class FrontController extends HttpServlet {
                 return;
             }
             ModelAndView mv = controller.process(request, response, com);
-            String viewPath = viewResolver(mv.getViewName());
-            View view = new View(viewPath);
-            view.render(mv.getModel(), request, response);
+            if(mv.getViewName() != "main") {
+                String viewPath = viewResolver(mv.getViewName());
+                View view = new View(viewPath);
+                view.render(mv.getModel(), request, response);
+            }
         }
     }
 
