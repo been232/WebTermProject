@@ -21,7 +21,7 @@
                 <div class="column">
                     <h4 class="col_tit">Menu</h4>
                     <div class="menu">
-                        <form class = "form" action="/front/Books/show" target="iframe1">
+                        <form class="form" action="/front/Books/show" target="iframe1">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">전체 책 정보 조회</button>
@@ -32,7 +32,8 @@
                                 </div>
                             </div>
                         </form>
-                        <form class = "form" action="/front/RentalManagement/loan" target="iframe2" onsubmit="return isLogin(${userID})">
+                        <form class="form" action="/front/RentalManagement/loan" target="iframe2"
+                              onsubmit="return isLogin(${userID})">
                             <div class="items">
                                 <div class="item-heading">
                                     <button name="id" type="submit" class="button" value="${userNum}">대출 현황 조회
@@ -44,7 +45,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form class = "form" action="" target="iframe3">
+                        <form class="form" action="" target="iframe3">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">반납</button>
@@ -72,18 +73,12 @@
                 </div>
             </div>
         </div>
-        <div id = "cont_menu">
+        <div id="cont_menu">
             <div class="container">
-                <div class = "column man">
-                    <div id = "sideNav" class = "sidebar">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    </div>
-                    <h4 class = "open" onclick="openNav()">Manager Menu</h4>
-                </div>
-                <div class = "column man2">
-                    <h4 class = "col_man">Manager Menu</h4>
-                    <div class = "menu">
-                        <form class = "form1" action="/front/BooksManagement/create" target="iframe5">
+                <div class="column">
+                    <h4 class="col_tit">Manager Menu</h4>
+                    <div class="menu">
+                        <form class="formMan" action="/front/BooksManagement/create" target="iframe5">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">책 추가</button>
@@ -94,7 +89,19 @@
                                 </div>
                             </div>
                         </form>
+                        <form class="formMan" action="/front/BooksManagement/delete" target="iframe5">
+                            <div class="items">
+                                <div class="item-heading">
+                                    <button type="submit" class="button">책 삭제</button>
+                                    <div class="item">
+                                        <iframe class="iframe" name="iframe5">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

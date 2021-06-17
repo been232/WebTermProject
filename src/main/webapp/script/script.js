@@ -1,13 +1,13 @@
 ﻿const x = window.matchMedia("screen and (min-width: 1025px)");
 let f = document.querySelectorAll("form");
 window.onload = function () {
-    if(x.matches) {
+    if (x.matches) {
         changeToIframe4(f);
     } else {
         changeToIframe2(f);
     }
 }
-x.addEventListener("change",() => {
+x.addEventListener("change", () => {
     if (x.matches) {
         changeToIframe4(f);
     } else {
@@ -16,18 +16,23 @@ x.addEventListener("change",() => {
 })
 
 function changeToIframe4(fo) {
-    for(var i = 0; i < fo.length; i++) {
-        fo.item(i).setAttribute("target", "iframe4");
-    }
-}function changeToIframe2(fo) {
-    for(var i = 0; i < fo.length; i++) {
-        fo.item(i).setAttribute("target", "iframe2");
+    for (var i = 0; i < fo.length; i++) {
+        if (!fo.item(i).classList.contains("formMan"))
+            fo.item(i).setAttribute("target", "iframe4");
     }
 }
+
+function changeToIframe2(fo) {
+    for (var i = 0; i < fo.length; i++) {
+        if (!fo.item(i).classList.contains("formMan"))
+            fo.item(i).setAttribute("target", "iframe2");
+    }
+}
+
 let items = document.querySelectorAll(".button");
 for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("click", function (e) {
-        if(e.target.parentElement.parentElement.parentElement.getAttribute("target") === "iframe4") {
+        if (e.target.parentElement.parentElement.parentElement.getAttribute("target") === "iframe4") {
             let target = document.getElementById("hidden-frame").classList;
             if (target.contains("active")) {
                 target.remove("active");
@@ -49,7 +54,7 @@ for (var i = 0; i < items.length; i++) {
 }
 
 function isLogin(userID) {
-    if(userID != null) return true;
+    if (userID != null) return true;
     else {
         alert("로그인이 필요합니다.")
         return false;

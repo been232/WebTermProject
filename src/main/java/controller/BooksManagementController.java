@@ -21,7 +21,7 @@ public class BooksManagementController implements Controller{
         ModelAndView modelAndView = new ModelAndView();
         if(url.equals("/BooksManagement/create"));    // jsp 에서 url 던지면 여기서 받아야함
         {
-            modelAndView.setViewName("/BooksManagement/create");
+            modelAndView.setViewName("BooksManagement/create");
             if(request.getMethod().equals("POST")){
                 String id = request.getParameter("id");
                 String name = request.getParameter("name");
@@ -40,7 +40,7 @@ public class BooksManagementController implements Controller{
                 booksManagerService.write(booksManagement);
                 booksService.write(book);
 
-                modelAndView.setViewName("/main");
+                modelAndView.setViewName("main");
             }
         }
         return modelAndView;
