@@ -39,3 +39,7 @@ for (var i = 0; i < items.length; i++) {
         }
     });
 }
+
+function isLogin(userID) {
+    return userID != null;
+}
