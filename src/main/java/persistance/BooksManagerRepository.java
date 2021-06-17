@@ -1,11 +1,15 @@
 package persistance;
 
+import domain.Books;
 import domain.BooksManagement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class BooksManagerRepository {
     private static BooksManagerRepository instance;
@@ -25,8 +29,93 @@ public class BooksManagerRepository {
             }
         }
         return instance;
-    }
-    public void save(BooksManagement booksManagement){
+    } public void save(BooksManagement booksManagement){
+        String sql = "insert into booksmanagement(Book_Id,Book_Place,Book_Cnt) values(?,?,?);";
 
+        Connection conn =null;
+        PreparedStatement pstmt = null;
+        try{
+            conn = ds.getConnection();
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,booksManagement.getId());
+            pstmt.setString(2,booksManagement.getPlace());
+            pstmt.setInt(3,booksManagement.getCnt());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                conn.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public BooksManagement findById(String id){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM BOOKSMANAGEMENT WHERE id=?";
+        BooksManagement booksManagement = new BooksManagement();
+        try{
+            conn = ds.getConnection();
+            pstmt =conn.prepareStatement(sql);
+            pstmt.setString(1,id);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                booksManagement.setId(rs.getString("book_id"));
+                booksManagement.setPlace(rs.getString("book_place"));
+                booksManagement.setCnt(rs.getInt("book_cnt"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                rs.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return booksManagement;
+    }
+
+    public ArrayList<BooksManagement> findAll(){
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = "select * from booksmanagement";
+        ArrayList<BooksManagement> booksManagements = new ArrayList<BooksManagement>();
+        try{
+            conn = ds.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                String id = rs.getString("Book_id");
+                String place = rs.getString("Book_place");
+                int cnt = rs.getInt("Book_cnt");
+                BooksManagement posts = new BooksManagement(id,place,cnt);
+                booksManagements.add(posts);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                rs.close();
+                st.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return booksManagements;
     }
 }
