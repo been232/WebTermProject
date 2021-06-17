@@ -49,7 +49,6 @@ public class BooksManagerRepository {
                 pstmt.executeUpdate();
             }
             else if(check.getId() != null){
-                System.out.println(check.getCnt());
                 pstmt = conn.prepareStatement(sql2);
                 pstmt.setInt(1,check.getCnt()+1);
                 pstmt.setString(2,booksManagement.getId());
@@ -130,5 +129,37 @@ public class BooksManagerRepository {
             }
         }
         return booksManagements;
+    }
+    public void deleteById(String id){
+        Connection conn = null;
+        PreparedStatement pstmt =null;
+
+        String sql1 = "delete from booksmanagement where id=?";
+        String sql2 = "update booksmanagement set Book_Cnt=? where Book_Id=? ";
+
+        BooksManagement check = findById(id);
+        try{
+            conn=ds.getConnection();
+            if(check.getCnt() == 1) {
+                pstmt = conn.prepareStatement(sql1);
+                pstmt.setString(1, id);
+                int n = pstmt.executeUpdate();
+            }
+            else{
+                pstmt = conn.prepareStatement(sql2);
+                pstmt.setInt(1,check.getCnt()-1);
+                pstmt.setString(2,id);
+                int n = pstmt.executeUpdate();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                conn.close();
+            }catch (Exception e){
+                e.printStackTrace();;
+            }
+        }
     }
 }
