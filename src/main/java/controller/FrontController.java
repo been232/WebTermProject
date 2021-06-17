@@ -18,6 +18,7 @@ public class FrontController extends HttpServlet {
         //controllerMap.put("domain 이름", new 도메인 컨트롤러);             // domain이름에 "member", 컨트롤러는 생성자 작성하면됨
         controllerMap.put("Login", new LoginController());
         controllerMap.put("Logout", new LogoutController());
+        controllerMap.put("Register", new RegisterController());
         controllerMap.put("RentalManagement", new RentalManagementController());
         controllerMap.put("BooksManagement",new BooksManagementController());
         controllerMap.put("Books", new BooksController());
