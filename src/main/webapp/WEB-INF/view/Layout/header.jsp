@@ -20,7 +20,6 @@
                 <div class="header_menu">     <%--나중에 로그인 상태면 로그아웃 하는거 보여주게 해야할듯? --%>
                     <a href="/front/register">Register</a>
                     <a href="/front/Login/login">Login</a>
-                    <a href="/front/BooksManagement/create">create</a>
                 </div>
             </c:if>
             <c:if test="${userID ne null}">

@@ -16,7 +16,7 @@ public class RentalManagementController implements Controller {
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url)
             throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
-        if(url.equals("/RentalManagement/laon")) {
+        if(url.equals("/RentalManagement/loan")) {
             int userNum = Integer.parseInt(request.getParameter("id"));
             System.out.println(userNum);
             ArrayList<RentalManagement> rentals = rentalManagementService.findRentals(userNum);

@@ -35,5 +35,4 @@
     <input type ="submit" value = "작성">
 </form>
 
-<jsp:include page= "../Layout/footer.jsp"/>
 </html>

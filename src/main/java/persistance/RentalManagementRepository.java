@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class RentalManagementRepository {
     private static RentalManagementRepository instance;
     private static DataSource ds;
-    private RentalManagementRepository() {
+    public RentalManagementRepository() {
 
     }
     public static RentalManagementRepository getInstance() {
@@ -63,10 +63,40 @@ public class RentalManagementRepository {
                 rs.close();
                 pstmt.close();
                 conn.close();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return rentals;
+    }
+
+    public int getCount() {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        RentalManagement rental = null;
+        int result = 0;
+        String sql = "SELECT COUNT(1) From rentalmanagement";
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                result = Integer.parseInt(rs.getString("COUNT(1)"));
+            }
+
+        } catch(SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }
