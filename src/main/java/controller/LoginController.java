@@ -42,8 +42,13 @@ public class LoginController implements Controller {
                     session.setAttribute("userName", loginResult.getName());
                     session.setAttribute("userNum", loginResult.getNum());
                     System.out.println("로그인 성공");
-                    modelAndView.setViewName("main");
                 }
+            }
+            String userID = (String) session.getAttribute("userID");
+            if(userID != null)
+            {
+                response.sendRedirect("/front/");
+                modelAndView.setViewName("main");
             }
         }
         else {
