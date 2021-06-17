@@ -168,7 +168,7 @@ public class BooksRepository {
         Connection conn = null;
         PreparedStatement pstmt =null;
 
-        String sql = "delete from books where id=?";
+        String sql = "delete from books where Book_num=?";
         try{
             conn=ds.getConnection();
             pstmt = conn.prepareStatement(sql);

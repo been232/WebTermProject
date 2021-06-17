@@ -132,7 +132,7 @@ public class BooksManagerRepository {
         Connection conn = null;
         PreparedStatement pstmt =null;
 
-        String sql1 = "delete from booksmanagement where id=?";
+        String sql1 = "delete from booksmanagement where book_id=?";
         String sql2 = "update booksmanagement set Book_Cnt=? where Book_Id=? ";
 
         BooksManagement check = findById(id);
