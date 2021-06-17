@@ -98,18 +98,16 @@ public class BooksManagerRepository {
 
     public ArrayList<BooksManagement> findAll(){
         Connection conn = null;
-        Statement st = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
-        String sql = "select * from booksmanagement";
-        ArrayList<BooksManagement> booksManagements = new ArrayList<BooksManagement>();
+        String sql = "SELECT * FROM booksmanagement";
+        ArrayList<BooksManagement> booksManagements = new ArrayList<>();
+
         try{
             conn = ds.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try{
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
             while(rs.next()){
                 String id = rs.getString("Book_id");
                 String place = rs.getString("Book_place");
@@ -122,7 +120,7 @@ public class BooksManagerRepository {
         }finally {
             try{
                 rs.close();
-                st.close();
+                pst.close();
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
