@@ -98,7 +98,7 @@ public class BooksRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM BOOKS WHERE num=?";
+        String sql = "SELECT * FROM BOOKS WHERE book_num=?";
         Books books = new Books();
         try{
             conn = ds.getConnection();
