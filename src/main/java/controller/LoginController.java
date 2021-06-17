@@ -1,6 +1,7 @@
 package controller;
 
 import domain.User;
+import persistance.ManagerRepository;
 import service.LoginService;
 
 import javax.servlet.RequestDispatcher;
@@ -38,6 +39,9 @@ public class LoginController implements Controller {
                 loginResult = this.loginService.Login(id, pw);
                 if(loginResult != null)
                 {
+                    ManagerRepository manager = new ManagerRepository();
+                    boolean isManager = manager.isManager(id);
+                    session.setAttribute("isManager", isManager);
                     session.setAttribute("userID", id);
                     session.setAttribute("userName", loginResult.getName());
                     session.setAttribute("userNum", loginResult.getNum());
