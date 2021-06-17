@@ -40,6 +40,7 @@ public class LoginController implements Controller {
                 {
                     session.setAttribute("userID", id);
                     session.setAttribute("userName", loginResult.getName());
+                    session.setAttribute("userNum", loginResult.getNum());
                     System.out.println("로그인 성공");
                     modelAndView.setViewName("main");
                 }

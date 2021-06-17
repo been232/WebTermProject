@@ -21,24 +21,37 @@
                 <div class="column">
                     <h4 class="col_tit">Menu</h4>
                     <div class="menu">
-                        <form id="form1" action="" target="iframe1">
+                        <form id="form4" action="/front/BooksManagement/create" target="iframe5">
                             <div class="items">
                                 <div class="item-heading">
-                                    <button type="submit" class="button">전체 책 정보 조회</button>
+                                    <button type="submit" class="button">책 추가</button>
                                     <div class="item">
-                                        <iframe class = "iframe" name = "iframe1">
-
+                                        <iframe class="iframe" name="iframe5">
+                                            <jsp:include page="./BooksManagement/create.jsp"/>
                                         </iframe>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <form id="form2" action="/front/RentalManagement/laon" target="iframe2">
+                        <form id="form1" action="" target="iframe1">
                             <div class="items">
                                 <div class="item-heading">
-                                    <button name = "id" type="submit" class="button" onsubmit="isLogin(${userID})" value = "${userID}">대출 현황 조회</button>
+                                    <button type="submit" class="button">전체 책 정보 조회</button>
                                     <div class="item">
-                                        <iframe class = "iframe" name="iframe2">
+                                        <iframe class="iframe" name="iframe1">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form id="form2" action="/front/RentalManagement/loan" target="iframe2">
+                            <div class="items">
+                                <div class="item-heading">
+                                    <button name="id" type="submit" class="button"
+                                            onsubmit="isLogin(${userNum});return false" value="${userNum}">대출 현황 조회
+                                    </button>
+                                    <div class="item">
+                                        <iframe class="iframe" name="iframe2">
                                             <jsp:include page="./RentalManagement/loan.jsp"/>
                                         </iframe>
                                     </div>
@@ -50,7 +63,7 @@
                                 <div class="item-heading">
                                     <button type="submit" class="button">반납</button>
                                     <div class="item">
-                                        <iframe class = "iframe" name = "iframe3">
+                                        <iframe class="iframe" name="iframe3">
 
                                         </iframe>
                                     </div>
@@ -64,10 +77,10 @@
         <div id="cont_bottom">
             <div class="container">
                 <div class="column">
-                    <div id = "hidden-frame">
-                        <div class = "item">
-                            <iframe class = "iframe" name = "iframe4">
-                                <jsp:include page = "./RentalManagement/loan.jsp"/>
+                    <div id="hidden-frame">
+                        <div class="item">
+                            <iframe class="iframe" name="iframe4">
+                                <jsp:include page="./RentalManagement/loan.jsp"/>
                             </iframe>
                         </div>
                     </div>
@@ -77,8 +90,9 @@
     </main>
     <jsp:include page="./Layout/footer.jsp"/>
 </div>
-</body>
 <script>
     <%@include file ="/script/script.js" %>
 </script>
+</body>
+
 </html>
