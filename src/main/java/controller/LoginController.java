@@ -17,10 +17,11 @@ import javax.sql.DataSource;
 
 import java.io.IOException;
 import service.LoginService;
+import service.ManagerService;
 
 public class LoginController implements Controller {
     private final LoginService loginService = new LoginService();
-
+    private final ManagerService managerService = new ManagerService();
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url)
             throws ServletException, IOException {
@@ -38,8 +39,8 @@ public class LoginController implements Controller {
                 loginResult = this.loginService.Login(id, pw);
                 if(loginResult != null)
                 {
-                    ManagerRepository manager = new ManagerRepository();
-                    boolean isManager = manager.isManager(id);
+                    managerService.isManager(id);
+                    boolean isManager = managerService.isManager(id);
                     session.setAttribute("isManager", isManager);
                     session.setAttribute("userID", id);
                     session.setAttribute("userName", loginResult.getName());

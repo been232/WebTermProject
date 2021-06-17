@@ -15,7 +15,7 @@ public class ManagerRepository {
     private static ManagerRepository instance;
     private static DataSource ds;
 
-    public ManagerRepository() {
+    private ManagerRepository() {
 
     }
 
@@ -51,14 +51,14 @@ public class ManagerRepository {
             }
         } catch (SQLException se) {
             se.printStackTrace();
-        } finally {
-            try {
-                rs.close();
-                pstmt.close();
-                conn.close();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+//        } finally {
+//            try {
+//                rs.close();
+//                pstmt.close();
+//                conn.close();
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
         }
         return isManager;
     }

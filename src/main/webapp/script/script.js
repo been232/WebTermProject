@@ -1,25 +1,33 @@
 ﻿const x = window.matchMedia("screen and (min-width: 1025px)");
-let form = document.getElementById("form2");
+let f = document.querySelectorAll("form");
 window.onload = function () {
     if(x.matches) {
-        form.setAttribute("target", "iframe4");
+        changeToIframe4(f);
     } else {
-        form.setAttribute("target", "iframe2");
+        changeToIframe2(f);
     }
 }
 x.addEventListener("change",() => {
     if (x.matches) {
-        form.setAttribute("target", "iframe4");
-
+        changeToIframe4(f);
     } else {
-        form.setAttribute("target", "iframe2");
+        changeToIframe2(f);
     }
 })
 
+function changeToIframe4(fo) {
+    for(var i = 0; i < fo.length; i++) {
+        fo.item(i).setAttribute("target", "iframe4");
+    }
+}function changeToIframe2(fo) {
+    for(var i = 0; i < fo.length; i++) {
+        fo.item(i).setAttribute("target", "iframe2");
+    }
+}
 let items = document.querySelectorAll(".button");
 for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("click", function (e) {
-        if(form.getAttribute("target") === "iframe4") {
+        if(e.target.parentElement.parentElement.parentElement.getAttribute("target") === "iframe4") {
             let target = document.getElementById("hidden-frame").classList;
             if (target.contains("active")) {
                 target.remove("active");
@@ -45,4 +53,12 @@ function isLogin(userID) {
     else {
         alert("로그인이 필요합니다.");
     }
+}
+
+function openNav() {
+    document.getElementById("sideNav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("sideNav").style.width = "0px";
 }
