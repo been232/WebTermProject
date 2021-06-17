@@ -44,11 +44,10 @@
                                 </div>
                             </div>
                         </form>
-                        <form id="form2" action="/front/RentalManagement/loan" target="iframe2">
+                        <form id="form2" action="/front/RentalManagement/loan" target="iframe2" onsubmit="isLogin(${userNum});return false">
                             <div class="items">
                                 <div class="item-heading">
-                                    <button name="id" type="submit" class="button"
-                                            onsubmit="isLogin(${userNum});return false" value="${userNum}">대출 현황 조회
+                                    <button name="id" type="submit" class="button" value="${userNum}">대출 현황 조회
                                     </button>
                                     <div class="item">
                                         <iframe class="iframe" name="iframe2">

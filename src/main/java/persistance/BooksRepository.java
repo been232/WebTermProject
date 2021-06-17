@@ -1,12 +1,13 @@
 package persistance;
 
 import domain.Books;
+import domain.BooksManagement;
+import domain.RentalManagement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.awt.print.Book;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,6 +30,42 @@ public class BooksRepository {
             }
         }
         return instance;
+    }
+    public ArrayList<Books> look(){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        ArrayList<Books> bookList = new ArrayList<>();
+        String sql = "SELECT * FROM books";
+
+        try{
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int num = rs.getInt("Book_Num");
+                String id = rs.getString("Book_Id");
+                String name = rs.getString("Book_Name");
+                String writer = rs.getString("Book_Writer");
+                String publisher = rs.getString("Book_Publisher");
+                LocalDateTime registration = rs.getTimestamp("Book_registration").toLocalDateTime();
+                Books book = new Books(num, id, name, writer, publisher, registration);
+                bookList.add(book);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                conn.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return bookList;
     }
     public void save(Books books){
         String sql = "insert into books(Book_Id, Book_Name,Book_Writer,Book_Publisher,Book_registration ) values(?,?,?,?,?);";
