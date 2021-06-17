@@ -4,17 +4,17 @@ public class Manager {
     public int num;
     public String name;
     public String id;
-    public String passward;
+    public String password;
 
     public Manager(){
 
     }
 
-    public Manager(int num, String name, String id, String passward) {
+    public Manager(int num, String name, String id, String password) {
         this.num = num;
         this.name = name;
         this.id = id;
-        this.passward = passward;
+        this.password = password;
     }
 
     public int getNum() {
@@ -41,12 +41,12 @@ public class Manager {
         this.id = id;
     }
 
-    public String getPassward() {
-        return passward;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassward(String passward) {
-        this.passward = passward;
+    public void setPassword(String passward) {
+        this.password = password;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Manager {
                 "num=" + num +
                 ", name='" + name + '\'' +
                 ", id='" + id + '\'' +
-                ", passward='" + passward + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

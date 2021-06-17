@@ -50,13 +50,13 @@ public class LoginRepository {
             rs = pstmt.executeQuery();
             if(rs.next()) // 입력된 아이디에 해당된 비번이 있을 경우
             {
-                dbPassword = rs.getString("User_Passward");
+                dbPassword = rs.getString("User_Password");
                 String userName = rs.getString("User_Name");
                 int userNum = rs.getInt("User_Num");
                 if(dbPassword.equals(pw))
                 {
                     result = new User();
-                    result.setPassward(dbPassword);
+                    result.setPassword(dbPassword);
                     result.setName(userName);
                     result.setNum(userNum);
                     //result = 1; // DB의 비번과 입력된 비번이 같으면 인증 성공
