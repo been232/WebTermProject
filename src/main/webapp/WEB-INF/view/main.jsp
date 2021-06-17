@@ -36,7 +36,7 @@
                               onsubmit="return isLogin(${userID})">
                             <div class="items">
                                 <div class="item-heading">
-                                    <button name="id" type="submit" class="button" value="${userNum}">대출 현황 조회
+                                    <button name="id" type="submit" class="button <c:if test = "${userID eq null}">noLogin</c:if>" value="${userNum}">대출 현황 조회
                                     </button>
                                     <div class="item">
                                         <iframe class="iframe" name="iframe2">

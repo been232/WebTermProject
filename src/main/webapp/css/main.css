@@ -74,6 +74,9 @@ main {
     padding: 10px;
     display: none;
 }
+.noLogin.active .item{
+    display : none;
+}
 .active .item {
     display : block;
 }
@@ -102,7 +105,9 @@ main {
     .item-heading {
         border-bottom: 1px solid #dbdbdb;
     }
-
+    .noLogin.active + .item{
+        display : none;
+    }
     .active + .item {
         display: block;
     }
