@@ -7,9 +7,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.awt.print.Book;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class BooksRepository {
     private static BooksRepository instance;
@@ -56,5 +56,75 @@ public class BooksRepository {
                 e.printStackTrace();
             }
         }
+    }
+    public Books findByNum(int num){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT * FROM BOOKS WHERE num=?";
+        Books books = new Books();
+        try{
+            conn = ds.getConnection();
+            pstmt =conn.prepareStatement(sql);
+            pstmt.setInt(1,num);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                books.setNum(rs.getInt("book_num"));
+                books.setId(rs.getString("book_id"));
+                books.setName(rs.getString("book_name"));
+                books.setWriter(rs.getString("book_writer"));
+                books.setPublisher(rs.getString("book_publisher"));
+                books.setRegistraion(rs.getTimestamp("book_registration").toLocalDateTime());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                rs.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return books;
+    }
+
+    public ArrayList<Books> findAll(){
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = "select * from books";
+        ArrayList<Books> books = new ArrayList<Books>();
+        try{
+            conn = ds.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                int num = rs.getInt("Book_num");
+                String id = rs.getString("Book_id");
+                String name = rs.getString("Book_name");
+                String writer = rs.getString("Book_Writer");
+                String publisher = rs.getString("Book_publisher");
+                LocalDateTime registration = rs.getTimestamp("Book_registration").toLocalDateTime();
+                Books posts = new Books(num,id,name,writer,publisher,registration);
+                books.add(posts);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try{
+                rs.close();
+                st.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return books;
     }
 }
