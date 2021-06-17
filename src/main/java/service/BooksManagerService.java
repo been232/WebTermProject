@@ -11,4 +11,5 @@ public class BooksManagerService {
     public void write(BooksManagement booksManagement){
         booksManagerRepository.save(booksManagement);
     }
+    public void delete(String id){booksManagerRepository.deleteById(id);}
 }

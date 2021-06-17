@@ -164,4 +164,25 @@ public class BooksRepository {
         }
         return books;
     }
+    public void deleteByNum(int num){
+        Connection conn = null;
+        PreparedStatement pstmt =null;
+
+        String sql = "delete from books where id=?";
+        try{
+            conn=ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,num);
+            int n = pstmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                pstmt.close();
+                conn.close();
+            }catch (Exception e){
+                e.printStackTrace();;
+            }
+        }
+    }
 }

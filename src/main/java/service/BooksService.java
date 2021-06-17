@@ -12,5 +12,6 @@ public class BooksService {
     public void write(Books books){
         booksRepository.save(books);
     }
+    public void delete(int num){booksRepository.deleteByNum(num);}
     public ArrayList<Books> lookup() {return booksRepository.look();}
 }

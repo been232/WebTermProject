@@ -12,7 +12,7 @@
 <form action="/front/BooksManagement/create" method="POST"  align="center">
     <table align="center">
         <tr>
-            <td>책 번호</td>
+            <td>책 ID</td>
             <td><input type="text" name=id /></td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@
             <td><input type="text" name=place /></td>
         </tr>
     </table>
-    <input type ="submit" value = "작성">
+    <input type ="submit" value = "추가">
 </form>
 
 </html>

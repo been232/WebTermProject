@@ -43,6 +43,18 @@ public class BooksManagementController implements Controller{
                 modelAndView.setViewName("main");
             }
         }
+        if(url.equals("/BooksManagement/delete"));    // jsp 에서 url 던지면 여기서 받아야함
+        {
+            modelAndView.setViewName("BooksManagement/delete");
+            if(request.getMethod().equals("POST")){
+                int num = Integer.parseInt(request.getParameter("num"));
+                String id = request.getParameter("id");
+                booksService.delete(num);
+                booksManagerService.delete(id);
+
+                modelAndView.setViewName("main");
+            }
+        }
         return modelAndView;
     }
 }
