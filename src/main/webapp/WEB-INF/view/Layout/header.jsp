@@ -18,7 +18,7 @@
         <div class="header">
             <c:if test="${userID eq null}">
                 <div class="header_menu">     <%--나중에 로그인 상태면 로그아웃 하는거 보여주게 해야할듯? --%>
-                    <a href="/front/register">Register</a>
+                    <a href="/front/Register/register">Register</a>
                     <a href="/front/Login/login">Login</a>
                 </div>
             </c:if>
