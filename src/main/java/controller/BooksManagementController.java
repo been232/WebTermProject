@@ -39,6 +39,8 @@ public class BooksManagementController implements Controller{
                 booksManagement.setPlace(place);
                 booksManagerService.write(booksManagement);
                 booksService.write(book);
+
+                modelAndView.setViewName("/main");
             }
         }
         return modelAndView;
