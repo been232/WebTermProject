@@ -30,19 +30,32 @@ public class BooksManagerRepository {
         }
         return instance;
     } public void save(BooksManagement booksManagement){
-        String sql = "insert into booksmanagement(Book_Id,Book_Place,Book_Cnt) values(?,?,?);";
+        String sql1 = "insert into booksmanagement(Book_Id,Book_Place,Book_Cnt) values(?,?,?);";
+        String sql2 = "update booksmanagement set Book_Cnt=? where Book_Id=? ";
 
         Connection conn =null;
         PreparedStatement pstmt = null;
+        BooksManagement check = findById(booksManagement.getId());
+        System.out.println(check.getId());
+        System.out.println(booksManagement.getId());
         try{
             conn = ds.getConnection();
+            if(check.getId() == null){
+                pstmt = conn.prepareStatement(sql1);
+                pstmt.setString(1,booksManagement.getId());
+                pstmt.setString(2,booksManagement.getPlace());
+                pstmt.setInt(3,1);
 
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,booksManagement.getId());
-            pstmt.setString(2,booksManagement.getPlace());
-            pstmt.setInt(3,booksManagement.getCnt());
+                pstmt.executeUpdate();
+            }
+            else if(check.getId() != null){
+                System.out.println(check.getCnt());
+                pstmt = conn.prepareStatement(sql2);
+                pstmt.setInt(1,check.getCnt()+1);
+                pstmt.setString(2,booksManagement.getId());
 
-            pstmt.executeUpdate();
+                pstmt.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -58,7 +71,7 @@ public class BooksManagerRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM BOOKSMANAGEMENT WHERE id=?";
+        String sql = "SELECT * FROM BOOKSMANAGEMENT WHERE book_id=?";
         BooksManagement booksManagement = new BooksManagement();
         try{
             conn = ds.getConnection();
