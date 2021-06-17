@@ -21,13 +21,13 @@
                 <div class="column">
                     <h4 class="col_tit">Menu</h4>
                     <div class="menu">
-                        <form id="form1" action="" target="iframe1">
+                        <form id="form1" action="/front/Books" target="iframe1">
                             <div class="items">
                                 <div class="item-heading">
                                     <button type="submit" class="button">전체 책 정보 조회</button>
                                     <div class="item">
                                         <iframe class = "iframe" name = "iframe1">
-
+                                            <jsp:include page="./Books/showBooksList.jsp"/>
                                         </iframe>
                                     </div>
                                 </div>

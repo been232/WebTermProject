@@ -8,7 +8,7 @@ public class Books {
     private String name;
     private String writer;
     private String publisher;
-    private LocalDateTime registraion;
+    private LocalDateTime registration;
 
     public Books(){
 
@@ -20,7 +20,7 @@ public class Books {
         this.name = name;
         this.writer = writer;
         this.publisher = publisher;
-        this.registraion = registraion;
+        this.registration = registraion;
     }
 
     public int getNum() {
@@ -64,11 +64,11 @@ public class Books {
     }
 
     public LocalDateTime getRegistraion() {
-        return registraion;
+        return registration;
     }
 
     public void setRegistraion(LocalDateTime registraion) {
-        this.registraion = registraion;
+        this.registration = registraion;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Books {
                 ", name='" + name + '\'' +
                 ", writer='" + writer + '\'' +
                 ", publisher='" + publisher + '\'' +
-                ", registraion='" + registraion + '\'' +
+                ", registraion='" + registration + '\'' +
                 '}';
     }
 }
