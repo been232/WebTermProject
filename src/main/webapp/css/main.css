@@ -80,7 +80,12 @@ main {
 .active + .item {
     display: block;
 }
-
+.manMenu {
+    display : none;
+}
+.isMan {
+    display : block;
+}
 #sideNav, #sideNav + span {
     display: none;
 }

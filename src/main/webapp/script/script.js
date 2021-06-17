@@ -4,28 +4,36 @@ window.onload = function () {
     if (x.matches) {
         changeToIframe4(f);
     } else {
-        changeToIframe2(f);
+        changeToIframe(f);
     }
 }
 x.addEventListener("change", () => {
     if (x.matches) {
         changeToIframe4(f);
     } else {
-        changeToIframe2(f);
+        changeToIframe(f);
     }
 })
 
 function changeToIframe4(fo) {
     for (var i = 0; i < fo.length; i++) {
-        if (!fo.item(i).classList.contains("formMan"))
-            fo.item(i).setAttribute("target", "iframe4");
+        let item = fo.item(i);
+        if (!item.classList.contains("formMan"))
+            item.setAttribute("target", "iframe4");
+        else {
+            item.setAttribute("target", "iframe7");
+        }
     }
 }
 
-function changeToIframe2(fo) {
+function changeToIframe(fo) {
     for (var i = 0; i < fo.length; i++) {
-        if (!fo.item(i).classList.contains("formMan"))
-            fo.item(i).setAttribute("target", "iframe2");
+        let item = fo.item(i);
+        if (!item.classList.contains("formMan"))
+            item.setAttribute("target", "iframe" + (i + 1));
+        else {
+            item.setAttribute("target", "iframe" + (i + 2));
+        }
     }
 }
 
@@ -34,6 +42,14 @@ for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("click", function (e) {
         if (e.target.parentElement.parentElement.parentElement.getAttribute("target") === "iframe4") {
             let target = document.getElementById("hidden-frame").classList;
+            if (target.contains("active")) {
+                target.remove("active");
+            } else {
+                target.remove("active");
+                target.add("active");
+            }
+        } else if (e.target.parentElement.parentElement.parentElement.getAttribute("target") === "iframe7") {
+            let target = document.getElementById("hidden-frame1").classList;
             if (target.contains("active")) {
                 target.remove("active");
             } else {
