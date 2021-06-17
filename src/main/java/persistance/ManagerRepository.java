@@ -43,6 +43,7 @@ public class ManagerRepository {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
+            if(rs == null) return false;
             while(rs.next()) {
                 if(rs.getString("Manager_Num") != null) {
                     isManager = true;

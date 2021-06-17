@@ -2,7 +2,6 @@ package persistance;
 
 import domain.Manager;
 import domain.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +25,7 @@ public class LoginRepository {
         if (instance == null) {
             try {
                 Context context = new InitialContext();
-                ds = (DataSource) context.lookup("java:comp/env/jdbc/MySql");
+                ds = (DataSource)context.lookup("java:comp/env/jdbc/MySql");
                 return instance = new LoginRepository();
             } catch (NamingException var1) {
                 var1.printStackTrace();
@@ -42,18 +41,20 @@ public class LoginRepository {
         ResultSet rs = null;
         String dbPassword = "";
         String sql = "SELECT * FROM USER WHERE User_Id = ?";
-        //   int result = 0;
+     //   int result = 0;
         User result = null;
         try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
-            while (rs.next()) {
+            if(rs.next()) // 입력된 아이디에 해당된 비번이 있을 경우
+            {
                 dbPassword = rs.getString("User_Passward");
                 String userName = rs.getString("User_Name");
                 int userNum = rs.getInt("User_Num");
-                if (dbPassword.equals(pw)) {
+                if(dbPassword.equals(pw))
+                {
                     result = new User();
                     result.setPassward(dbPassword);
                     result.setName(userName);

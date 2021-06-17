@@ -29,7 +29,6 @@ public class LoginController implements Controller {
             HttpSession session = request.getSession();
             String id = "";
             String pw = "";
-    //        int loginResult;
             User loginResult;
             modelAndView.setViewName("Login/login");
             if(request.getMethod().equals("POST"))
@@ -45,7 +44,6 @@ public class LoginController implements Controller {
                     session.setAttribute("userID", id);
                     session.setAttribute("userName", loginResult.getName());
                     session.setAttribute("userNum", loginResult.getNum());
-                    System.out.println("로그인 성공");
                     modelAndView.setViewName("main");
                 }
             }
