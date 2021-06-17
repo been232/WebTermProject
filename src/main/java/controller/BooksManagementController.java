@@ -19,8 +19,9 @@ public class BooksManagementController implements Controller{
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url)
         throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
-        if(url.equals("/front/main/create"));    // jsp 에서 url 던지면 여기서 받아야함
+        if(url.equals("/BooksManagement/create"));    // jsp 에서 url 던지면 여기서 받아야함
         {
+            modelAndView.setViewName("/BooksManagement/create");
             if(request.getMethod().equals("POST")){
                 String id = request.getParameter("id");
                 String name = request.getParameter("name");
@@ -38,7 +39,6 @@ public class BooksManagementController implements Controller{
                 booksManagement.setPlace(place);
                 booksManagerService.write(booksManagement);
                 booksService.write(book);
-
             }
         }
         return modelAndView;
