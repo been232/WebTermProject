@@ -19,7 +19,7 @@ public class BooksManagementController implements Controller{
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url)
         throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
-        if(url.equals("/BooksManagement/create"));    // jsp 에서 url 던지면 여기서 받아야함
+        if(url.equals("/BooksManagement/create"))    // jsp 에서 url 던지면 여기서 받아야함
         {
             modelAndView.setViewName("BooksManagement/create");
             if(request.getMethod().equals("POST")){
@@ -42,8 +42,7 @@ public class BooksManagementController implements Controller{
 
                 modelAndView.setViewName("main");
             }
-        }
-        if(url.equals("/BooksManagement/delete"));    // jsp 에서 url 던지면 여기서 받아야함
+        }else if (url.equals("/BooksManagement/delete"))    // jsp 에서 url 던지면 여기서 받아야함
         {
             modelAndView.setViewName("BooksManagement/delete");
             if(request.getMethod().equals("POST")){
