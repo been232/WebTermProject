@@ -21,14 +21,20 @@
                     <td>Place</td>
                 </tr>
                 </thead>
-                <c:forEach var="book" items="${books}">
+                <c:forEach var="book" items="${books}" varStatus="stat">
                     <tr>
                         <td>${book.num}</td>
                         <td>${book.name}</td>
                         <td>${book.writer}</td>
                         <td>${book.publisher}</td>
+                        <c:forEach var="place" items="${place}">
+                            <c:if test="${book.id eq place.id}">
+                                <td>${place.place}</td>
+                            </c:if>
+                        </c:forEach>
                     </tr>
                 </c:forEach>
+
             </table>
         </div>
     </div>
